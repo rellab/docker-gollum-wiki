@@ -17,22 +17,19 @@ wiki_options = {
 Precious::App.set(:wiki_options, wiki_options)
 
 options = {
-  # OmniAuth::Builder block is passed as a proc
-  :providers => Proc.new do
-    # Found https://github.com/settings/applications/
-    provider :github, ENV['GITHUB_OAUTH_CLIENT_ID'], ENV['GITHUB_OAUTH_SECRET']
-  end,
-  :dummy_auth => false,
-  # If you want to make pages private:
-  #:protected_routes => ['/private*'],
+#   # OmniAuth::Builder block is passed as a proc
+#   :providers => Proc.new do
+#     # Found https://github.com/settings/applications/
+#     provider :github, ENV['GITHUB_OAUTH_CLIENT_ID'], ENV['GITHUB_OAUTH_SECRET']
+#   end,
+#   :dummy_auth => false,
+#   # If you want to make pages private:
+#   #:protected_routes => ['/private*'],
 
-  # Specify committer name as just the user name
-  :author_format => Proc.new { |user| user.name },
-  # Specify committer e-mail as just the user e-mail
-  :author_email => Proc.new { |user| user.email },
-
-  # Authorized users
-  :authorized_users => ENV["AUTHORIZED_USERS"].split(","),
+#   # Specify committer name as just the user name
+#   :author_format => Proc.new { |user| user.name },
+#   # Specify committer e-mail as just the user e-mail
+#   :author_email => Proc.new { |user| user.email },
 }
 
 
