@@ -1,0 +1,26 @@
+FROM ruby:2.7
+RUN apt-get -y update && \
+    apt-get -y install libicu-dev cmake && \
+    rm -rf /var/lib/apt/lists/*
+RUN gem install \
+    github-linguist \
+    gollum \
+    org-ruby  \
+    github-markup
+
+# RUN gem install omnigollum
+# RUN gem install omniauth-github
+
+COPY entrypoint.sh /entrypoint.sh
+COPY config.rb /config.rb
+
+VOLUME /wiki
+WORKDIR /wiki
+
+ENV GOLLUM_USER gollum
+ENV GOLLUM_EMAIL gollum@gollum.org
+ENV GOLLUM_PORT 4567
+
+EXPOSE 4567
+
+CMD ["/entrypoint.sh"]
